@@ -1,6 +1,6 @@
 from nltk.corpus import wordnet as wn
 
-from db import Dictionnary, session
+from pgvalues_examples.db import Dictionnary, session
 
 
 def convert_pos(wn_pos):
