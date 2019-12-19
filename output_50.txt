@@ -1,0 +1,56 @@
+---NaiveUnsortedFilter---
+filename            build_query exec_query filter total
+tibetan_plateau           0.059     0.0762  0.146 0.281
+actus_reus               0.0587      0.076   0.14 0.274
+last_glacial_period      0.0873      0.115  0.344 0.546
+qinghai                  0.0729     0.0947  0.208 0.376
+brownie_lake             0.0643      0.084 0.0899 0.238
+
+---NaiveSortedFilter---
+filename            sort_tokens build_query exec_query filter total
+tibetan_plateau         0.00177      0.0801     0.0842 0.00309 0.169
+actus_reus              0.00153      0.0766      0.078 0.00301 0.159
+last_glacial_period     0.00367         0.1      0.104 0.00491 0.213
+qinghai                 0.00208      0.0939     0.0969 0.00359 0.196
+brownie_lake            0.00122      0.0674     0.0762 0.00221 0.147
+
+---OptPGValuesFilter---
+filename            build_values filter total
+tibetan_plateau         0.000246   0.13  0.13
+actus_reus              0.000237  0.129 0.129
+last_glacial_period     0.000319  0.189  0.19
+qinghai                 0.000234   0.15  0.15
+brownie_lake             0.00033 0.0654 0.0658
+
+---NaiveUnsortedAggreg---
+filename            build_query exec_query aggreg total
+tibetan_plateau          0.0607     0.0738 0.0827 0.217
+actus_reus               0.0602     0.0723 0.0775  0.21
+last_glacial_period      0.0815      0.103  0.172 0.357
+qinghai                  0.0733     0.0923  0.117 0.283
+brownie_lake             0.0527     0.0598 0.0433 0.156
+
+---NaiveSortedAggreg---
+filename            sort_tokens build_query exec_query aggreg total
+tibetan_plateau         0.00161      0.0696     0.0794 0.00331 0.154
+actus_reus              0.00141       0.074     0.0733 0.0035 0.152
+last_glacial_period     0.00409       0.103      0.118 0.00653 0.231
+qinghai                 0.00227      0.0972     0.0938 0.00437 0.198
+brownie_lake            0.00115      0.0661     0.0684 0.00255 	0.138
+
+---OptPGValuesAggreg---
+filename            build_values aggreg total
+tibetan_plateau         0.000238  0.133 0.134
+actus_reus              0.000223  0.122 0.122
+last_glacial_period     0.000243  0.156 0.157
+qinghai                 0.000225  0.137 0.137
+brownie_lake             0.00033 0.0588 0.0591
+
+--Summary--
+experiment          tibetan_plateau actus_reus last_glacial_period qinghai brownie_lake
+NaiveUnsortedFilter           0.281      0.274               0.546   0.376        0.238
+NaiveSortedFilter             0.169      0.159               0.213   0.196        0.147
+OptPGValuesFilter              0.13      0.129                0.19    0.15       0.0658
+NaiveUnsortedAggreg           0.217       0.21               0.357   0.283        0.156
+NaiveSortedAggreg             0.154      0.152               0.231   0.198        0.138
+OptPGValuesAggreg             0.134      0.122               0.157   0.137       0.0591

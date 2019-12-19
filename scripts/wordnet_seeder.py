@@ -1,3 +1,4 @@
+#! python
 from nltk.corpus import wordnet as wn
 
 from pgvalues_examples.db import Dictionnary, session
