@@ -17,17 +17,17 @@ def build_values(tokens):
     )
 
 
-def filter_tokens(tokens):
+def filter_tokens(pg_values):
     return session\
-        .query(tokens.c.text, tokens.c.word, tokens.c.pos)\
-        .join(Dictionnary, and_(Dictionnary.word == tokens.c.word, Dictionnary.pos == tokens.c.pos))\
+        .query(pg_values.c.text, pg_values.c.word, pg_values.c.pos)\
+        .join(Dictionnary, and_(Dictionnary.word == pg_values.c.word, Dictionnary.pos == pg_values.c.pos))\
         .all()
 
 
-def agg_tokens(tokens):
+def agg_tokens(pg_values):
     return session\
-        .query(Dictionnary.word, Dictionnary.pos, func.array_agg(tokens.c.text))\
-        .join(tokens, and_(Dictionnary.word == tokens.c.word, Dictionnary.pos == tokens.c.pos))\
+        .query(Dictionnary.word, Dictionnary.pos, func.array_agg(pg_values.c.text))\
+        .join(pg_values, and_(Dictionnary.word == pg_values.c.word, Dictionnary.pos == pg_values.c.pos))\
         .group_by(Dictionnary.word, Dictionnary.pos)\
         .all()
 
@@ -38,10 +38,10 @@ class OptPGValuesFilter(Experiment):
     @Timer.session
     def run(self, filename, tokens, timer=None):
         with timer():
-            tok_values = build_values(tokens)
+            pg_values = build_values(tokens)
 
         with timer():
-            filter_tokens(tok_values)
+            filter_tokens(pg_values)
 
 
 class OptPGValuesAggreg(Experiment):
@@ -50,7 +50,7 @@ class OptPGValuesAggreg(Experiment):
     @Timer.session
     def run(self, filename, tokens, timer=None):
         with timer():
-            tok_values = build_values(tokens)
+            pg_values = build_values(tokens)
 
         with timer():
-            agg_tokens(tok_values)
+            agg_tokens(pg_values)
